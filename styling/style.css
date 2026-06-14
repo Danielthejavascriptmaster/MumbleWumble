@@ -8,8 +8,9 @@ body{
 .content{
     background: rgb(23, 23, 23);
     border-radius: 15px;
-    height: 350px;
+    height: 400px;
     width: 470px;
+    margin-top: 100px;
     
 }
 
@@ -29,11 +30,21 @@ body{
     margin-left: 30px;
 }
 
+.title{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+#green{
+    color: lightgreen;
+}
+
 #description{
     color: grey;
     display: flex;
     justify-content: center;
-    
+    transform: translateY(-10px);
 }
 
 .main-buttons{
@@ -45,11 +56,18 @@ body{
     align-items: center;
 }
 
-#input{
+.input{
     width: 150px;
     border-radius: 10px;
     border: none;
     padding: 8px;
+}
+
+.input-box{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 
@@ -73,11 +91,30 @@ body{
     transform: translateY(5px);
 }
 
+.extra-buttons{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
 #credit,
 #tutorial{
     border: none;
-    background: transparent;
+    background: rgb(18, 18, 18);
+    color: white;
+    border-radius: 5px;
+    padding: 4px;
+    font-size: 20px;
+    transition: 0.5s;
 }
+
+#credit:hover,
+#tutorial:hover{
+    background: white;
+    color: black;
+}
+
 
 
 
