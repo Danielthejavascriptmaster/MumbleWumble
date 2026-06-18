@@ -1,32 +1,32 @@
-import { decrypt_alias, decrypt_codeword_alias, encrypt_alias, encrypt_codeword_alias } from './data.js'
+import { encrypt_alias_high, encrypt_alias_low, decrypt_alias_high, decrypt_alias_low } from './data.js'
 
-function encrypt(message, code_word) {
-    let message_list = message.toLowerCase().split("");
-    let encryption_numbers = [];
+export function encrypt(message, code_word) {
+    let message_letters = message.toLowerCase().split('');
+    let code_word_letters = code_word.toLowerCase().split('');
 
-    let code_word_list = code_word.toLowerCase().split("");
-    let total_code_word_value = 0;
+    let code_word_total = 0;
 
-    code_word_list.forEach(letter => {
-        total_code_word_value += encrypt_codeword_alias[letter];
-    });
-    message_list.forEach(letter => {
-        let encrypted_word = encrypt_alias[letter] += total_code_word_value
-        encryption_numbers.push(encrypted_word.toString().split(""))
-    });
-
-    let encryption_numbers_single = []
-    for (let count = 0; count < encryption_numbers.length; count++) {
-        encryption_numbers_single.push(encryption_numbers[count][0])
-        encryption_numbers_single.push(encryption_numbers[count][1])
+    for (let letter of code_word_letters) {
+        code_word_total += encrypt_alias_high[letter];
     }
 
-    let encryption_letters_single = []
-    encryption_numbers_single.forEach(numbers => {
-        encryption_letters_single.push(decrypt_alias[numbers])
-    });
+    let message_numbers = [];
+    for (let letter of message_letters) {
+        message_numbers.push(encrypt_alias_high[letter] + code_word_total);
+    }
 
-    let encrypted_word_final = encryption_letters_single.join("")
+    let message_numbers_single = [];
 
-    return encrypted_word_final
+    for (let number of message_numbers) {
+        let double = String(number).split('');
+        for (let digit of double) {
+            message_numbers_single.push(parseInt(digit));
+        }
+    }
+    let encrypted_code_digits = [];
+    for (let number of message_numbers_single) {
+        encrypted_code_digits.push(decrypt_alias_low[number]);
+    }
+
+    return encrypted_code_digits.join('');
 }

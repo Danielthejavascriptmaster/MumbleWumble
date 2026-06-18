@@ -1,42 +1,35 @@
-import { decrypt_alias, decrypt_codeword_alias, encrypt_alias, encrypt_codeword_alias } from './data.js'
+import { encrypt_alias_high, encrypt_alias_low, decrypt_alias_high, decrypt_alias_low } from './data.js'
 
-function decrypt(message, code_word) {
-    let encrypted_codeword_split = code_word.split("")
-    let encrypted_word_split = message.split("")
+export function decrypt(message, code_word) {
+    let message_letters = message.toLowerCase().split('');
+    let code_word_letters = code_word.toLowerCase().split('');
 
-    let encrypted_codeword_split_num = []
-    let encrypted_word_split_num = []
+    let code_word_total = 0;
 
-    let code_word_total = 0
-
-    encrypted_codeword_split.forEach(number => {
-        code_word_total += encrypt_codeword_alias[number]
-    });
-
-    encrypted_word_split.forEach(number => {
-        encrypted_word_split_num.push(encrypt_alias[number])
-    });
-
-
-    let cycle_length = encrypted_word_split_num.length
-    let encrypted_codeword_split_num_twins = []
-    for (let i = 0; i < cycle_length - 6; i++) {
-        let pair = encrypted_word_split_num[0].toString() + encrypted_word_split_num[1].toString()
-        encrypted_codeword_split_num_twins.push(pair)
-        encrypted_word_split_num.splice(encrypted_word_split_num, 2)
+    for (let letter of code_word_letters) {
+        code_word_total += encrypt_alias_high[letter];
     }
 
-    let encrypted_codeword_split_letter = []
-    encrypted_codeword_split_num_twins.forEach(number => {
-        number = Number(number)
-        number -= code_word_total
-        console.log(code_word_total)
-        encrypted_codeword_split_letter.push(decrypt_alias[number])
-    });
+    let message_numbers_single = [];
+    for (let letter of message_letters) {
+        message_numbers_single.push(encrypt_alias_low[letter]);
+    }
+    let message_numbers_double = [];
 
-    console.log(encrypted_codeword_split_num_twins)
-    console.log(encrypted_codeword_split_letter)
+    let loop_range = Math.floor(message_numbers_single.length / 2);
+    for (let number = 0; number < loop_range; number++) {
+        let fake_message_numbers_single = message_numbers_single;
+        let double_digit = String(fake_message_numbers_single[0]) + String(fake_message_numbers_single[1]);
+        message_numbers_double.push(double_digit);
 
-    let decrypted_message = encrypted_codeword_split_letter.join("")
-    return decrypted_message
+        fake_message_numbers_single.shift();
+        fake_message_numbers_single.shift();
+    }
+
+    let message_letters_decrypted = [];
+    for (let number of message_numbers_double) {
+        message_letters_decrypted.push(decrypt_alias_high[parseInt(number) - code_word_total]);
+    }
+
+    return message_letters_decrypted.join('');
 }
