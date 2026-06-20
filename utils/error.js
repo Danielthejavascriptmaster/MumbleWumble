@@ -1,26 +1,20 @@
 const popup = document.querySelector(".error-popup");
-const blur = document.querySelector("blurry-screen");
+const blur = document.querySelector("#blurry-screen");
 
-const closeBtn = document.querySelector("close-button")
-const okBtn = document.querySelector("ok-button")
+const closeBtn = document.querySelector("#close-button");
+const okBtn = document.querySelector("#ok-button");
 
-function showError(){
-    popup.style.dispaly = "flex";
-    blur.style.dispaly = "block";
+function showError() {
+    popup.style.display = "flex";
+    blur.style.display = "block";
 }
 
-function hideError(){
+function hideError() {
     popup.style.display = "none";
     blur.style.display = "none";
 }
 
-closeBtn(addEventListener("click"), function(){
-    hideError()
-});
+closeBtn.addEventListener("click", hideError);
+okBtn.addEventListener("click", hideError);
 
-okBtn(addEventListener("click"), function(){
-    hideError()
-});
-
-
-
+showError();     

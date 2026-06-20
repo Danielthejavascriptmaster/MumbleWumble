@@ -1,7 +1,7 @@
 .error-popup {
     width:550px;
     height: auto;
-    background: black;
+    background: rgb(23, 23, 23);
     position: absolute;
     top: 350px;
     display: none;
@@ -9,7 +9,8 @@
     justify-content: center;
     z-index: 10;
     border-radius: 10px;
-    box-shadow: 2px 0px 10px  rgb(64, 64, 64);
+    box-shadow: 2px 0px 10px rgb(229, 247, 201) ;
+    animation: slideIn 0.5s ease-in forwards;
 }
 
 .error-message {
@@ -21,7 +22,9 @@
     color: white;
     font-size: 30px;
     margin: 20px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Times New Roman', Times, serif;
+    border-bottom: 1px solid greenyellow;
+    padding-bottom: 20px;
 }
 
 #close-button {
@@ -31,7 +34,7 @@
     width: 30px;
     height: 30px;
     color: white;
-    background: red;
+    background: rgb(108, 136, 85);
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -40,7 +43,7 @@
 
 #close-button:hover{
     transform:translateY(-5px);
-    background: rgb(92, 0, 0);
+    background: rgb(8, 61, 4);
     color: grey;
 }
 
@@ -67,4 +70,16 @@
     width: 100%;
     position: absolute;
     backdrop-filter: blur(10px);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-10%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(20%);
+        opacity: 1;
+    }
 }
