@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MumbleWumble</title>
     <link rel="stylesheet" href="styling/style.css">
 </head>
+
 <body>
     <div class="content">
         <p id="name">Word Game</p>
@@ -15,27 +17,23 @@
             <h1 id="green">Wumble</h1>
         </div>
 
-        <p id="description">Type a word, then scramble or unscrabmle it instantly.</p>
-        
+        <p id="description">Type a word, then scramble or unscramble it instantly.</p>
+
         <div class="input-box">
-            <input class="input" type="text" placeholder="Enter a word...">
-            <input class="input" type="text" placeholder="Enter a some numbers">
+            <input class="input" type="text" id="message" placeholder="Enter a message...">
+            <input class="input" type="text" id="code_word" placeholder="Enter a code word">
         </div>
 
-            <div class="main-buttons">
-                <button id="scramble">Scramble</button>
-                <button id="unscramble">Unscramble</button>
-            </div>
+        <div class="main-buttons">
+            <button id="scramble" type="button">Scramble</button>
+            <button id="unscramble" type="button">Unscramble</button>
+        </div>
 
             <div class="extra-buttons">
                 <button id="tutorial">Tutorial</button>
                 <button id="credit">Credits</button>
             </div>
     </div> 
-
-
-    <div class="popupMessage">
-        
-    </div>
 </body>
+
 </html>

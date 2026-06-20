@@ -1,4 +1,4 @@
-export let encrypt_alias = {
+export let encrypt_alias_high = {
     "a": 26,
     "b": 25,
     "c": 24,
@@ -27,7 +27,7 @@ export let encrypt_alias = {
     "z": 1,
     "&": 0.
 }
-export let encrypt_codeword_alias = {
+export let encrypt_alias_low = {
     "&": 0,
     "a": 1,
     "b": 2,
@@ -56,8 +56,7 @@ export let encrypt_codeword_alias = {
     "y": 25,
     "z": 26.
 }
-
-export let decrypt_alias = {
+export let decrypt_alias_high = {
     26: "a",
     25: "b",
     24: "c",
@@ -86,8 +85,7 @@ export let decrypt_alias = {
     1: "z",
     0: "&",
 }
-
-export let decrypt_codeword_alias = {
+export let decrypt_alias_low = {
     0: "&",
     1: "a",
     2: "b",
@@ -115,4 +113,4 @@ export let decrypt_codeword_alias = {
     24: "x",
     25: "y",
     26: "z",
-}       
+}      
