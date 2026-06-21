@@ -1,6 +1,6 @@
-import { valid_input } from '../utils/input_verifier.js'
-import { encrypt } from '../utils/encrypt.js'
-import { decrypt } from '../utils/decrypt.js'
+import { valid_input } from './utils/input_verifier.js'
+import { encrypt } from './utils/encrypt.js'
+import { decrypt } from './utils/decrypt.js'
 
 function showError() {
     popup.style.display = "flex";
